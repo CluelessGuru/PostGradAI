@@ -1,0 +1,50 @@
+#
+#problem parameters
+../datasets/mnist.csv                   #<filename.csv>
+ -output=1                              #[-output=<class columns in csv: <i1,i2,...,in> column ids, <=0 from end>]
+# -exclude=                              #[-exclude=<i1,i2,...,in> column ids to exclude, <=0 from end>]
+ -label=1                               #[-label=<i1,i2,...,in> column ids to force categorical encoding, <=0 from end>]
+# -exclude=2,7,9,13,16,17,20,22,23,26,27,28,30,36,42,43,49,52,54,61,73,74,75,80,81,83,85,86,87,92,99,100,103,104,106,111,112,116,119,120,125,135,137,138,143,144,152,155,156,167,169,170,175,187,188,195,197,200,211,215,218,223,224,226,227,237,241,242,256,258,259,260,261,262,272,273,277,279,284,288,290,307,311,314,316,319,321,324,325,327,329,330,333,341,343,349,357,361,364,371,378,382,383,385,387,394,399,400,405,407,410,412,418,419,421,423,425,450,452,454,455,457,458,460,462,465,466,470,473,474,475,477,478,487,488,492,496,501,506,512,516,528,531,533,541,542,543,549,552,555,558,564,569,571,575,577,579,581,584,586,587,589,590,601,603,604,608,610,614,615,616,622,624,627,630,632,634,636,639,640,643,648,651,655,657,660,664,665,670,673,685,687,695,696,709,713,715,718,723,730,731,733,736,742,744,745,751,757,759,760,761,762,765,768,769,770,772,773,774,775,782
+#
+#NN parameters
+ -layertypes=1,4,1,9                    #[-layertypes=<layertype list 1:Fullrank,2:Sigmoid,3:Softmax,4:ReLu,5:Hermite, 
+                                        #              6:Lowrank,7:Polynomial,8:SeLU,9:LogSoftmax,10:LogSigmoid,11:GRBF)>]
+ -layerdim=64                           #[-layerdim=<layer dimensions>] 
+ -leak=0.001                            #[-leak=<ReLU leak>]
+ -hdegree=5                             #[-hdegree=<Hermite degree>]
+ -lrank=1                               #[-lrank=<Rank for Lowrank layers>]
+ -pdegree=3                             #[-pdegree=<Polynomial degree>]
+ -prank=0                               #[-prank=<list of rank for Polynomial layers>]
+#
+#Training Parameters
+ -ncycles=1000                          #[-ncycles=<Max NN training cycles>]
+ -batch=16                              #[-batch=<training batch>]
+ -error=0.                              #[-error=<stopping error>]
+ -validate=-10000                       #[-validate=<validation %, <0 -n records from end]
+ -loss=5                                #[-loss=<loss function (0:MSE, 1:MAE, 2:CE, 3:BCE, 4:BCEL, 5:CEL, 6:MSEL)>]
+ -encode=2                              #[-encode=<encoding (0: Binary, 1: Label, 2:One hot>]
+ -scale=1                               #[-scale=<initial scaling (0:No Scaling, 1:MinMax, 2:Zscore)>]
+#
+#Optimizer parameters
+ -optimizer=3                           #[-optimizer=<optimizer (0:GD, 1:Momentum, 2:RMSP, 3:Adam)>]
+ -alpha=0.001                           #[-alpha=<learning rate>]
+ -beta1=0.9                             #[-beta1=<optimizer parameter>]
+ -beta2=0.999                           #[-beta2=<optimizer parameter>]
+#
+#FS parameters
+ -epsilon=1.0                           #[-epsilon=<BSA epsilon>]
+ -mixrate=0.8                           #[-mixrate=<BSA mixrate>]
+ -pso_c1=1                              #[-pso_c1=<PSO c1 param>]
+ -pso_c2=1                              #[-pso_c2=<PSO c2 param>]
+ -pso_c3=1                              #[-pso_c3=<PSO c3 param>]
+ -pso_c4=1                              #[-pso_c4=<PSO c4 param>]
+ -pso_k=0                               #[-pso_k=<PSO k-tournament %>]
+ -ga=1	                                #[-ga=<genetic algorithm 0:BSAO, 1: SBMBSA, 2:SBPSO, 3:BiPSO, 4:BiMBSA>]
+ -nepoch=50                             #[-nepoch=<BSA number of epochs>] 
+ -natoms=0                              #[-natoms=<BSA population size>]
+#
+#General parameteres
+ -seed=0                                #[-seed=<seed for RNG>]
+ -check=0                               #[-check=<gradient threshold>]
+ -nthreads=16                           #[-nthreads=<nthreads>]
+ -timeout=10000                         #[-timeout=<timeout(s)>]
